@@ -1,0 +1,11 @@
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: transparent;
+  border: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Adiciona uma sombra para destacar */
+  background-color: transparent;
+}
