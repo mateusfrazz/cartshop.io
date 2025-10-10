@@ -1,34 +1,53 @@
 <app-navbar></app-navbar>
 
 <main class="container-fluid">
-    
-    <!-- banner start -->
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-  
+  <!-- banner start -->
+  <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-     <ng-container *ngFor="let banner of bannerImgss; let first = first">
-
-    <div class="carousel-item" [class.active]="first">
-      <img [src]="banner.img" class="d-block w-100" alt="...">
+      <ng-container *ngFor="let banner of bannerImgs; let first = first">
+        <div class="carousel-item" [class.active]="first">
+          <img [src]="banner.img" class="d-block w-100" alt="..." />
+        </div>
+      </ng-container>
     </div>
 
-  </ng-container>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden"></span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden"></span>
+    </button>
+  </div>
+  <!-- banner end -->
+
+  <!-- categoris box start -->
+  <div class="container mt-5 mb-5">
+    <div class="row categorieBox">
+      <div class="col lg-3 categorieContent" *ngFor="let categoria of categoriesImgs">
+        <a>
+          <img src="{{ categoria.img }}" />
+          <h4>{{ categoria.name }}</h4>
+        </a>
+      </div>
+    </div>
   </div>
 
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden"></span>
-  </button>
-</div>
- <!-- banner end -->
+  <!-- categoris box end -->
 
- <!-- categoris box start -->
+  <!-- show products start -->
+    
 
- 
-   <!-- categoris box end -->
-
+   <!-- show products end -->
 </main>

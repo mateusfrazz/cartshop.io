@@ -9,3 +9,29 @@
   filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); /* Adiciona uma sombra para destacar */
   background-color: transparent;
 }
+
+.categorieBox{
+  border-radius: 5px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.categorieBox a{
+  text-decoration: none;
+  color:#000 ;
+}
+
+.categorieContent{
+  padding: 20px 20px;
+}
+
+.categorieContent img{
+  object-fit: contain;
+  border-radius: 50%;
+  border: 2px solid rgb(54, 16, 244);
+}
+
+.categorieContent h4 {
+  margin-top: .9375rem;
+  font-size: 1.125rem;
+}
