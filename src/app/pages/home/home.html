@@ -11,21 +11,13 @@
       </ng-container>
     </div>
 
-    <button
-      class="carousel-control-prev"
-      type="button"
-      data-bs-target="#carouselExampleAutoplaying"
-      data-bs-slide="prev"
-    >
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden"></span>
     </button>
-    <button
-      class="carousel-control-next"
-      type="button"
-      data-bs-target="#carouselExampleAutoplaying"
-      data-bs-slide="next"
-    >
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+      data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden"></span>
     </button>
@@ -47,7 +39,33 @@
   <!-- categoris box end -->
 
   <!-- show products start -->
-    
 
-   <!-- show products end -->
+  <!-- show appliance products -->
+  <div class="container mt-3 mb-3">
+    <div class="row productBox">
+      <p>
+        <a class="float-start link-offset-3" routerLink="">Best of Appliance</a>
+        <a class="float-end" routerLink="">
+          <i class="bi bi-arrow-right-circle"></i>
+        </a>
+      </p>
+      <div class="col-lg-3 mt-5" *ngFor="let products of productsAll; index as i ">
+         <a routerLink="" class="productLink">
+           <div class="productsContent" *ngIf="i<=3">
+          <div class="productImg">
+                <img src="{{products.pdImg}}" alt="">
+          </div>
+          <h4>
+            {{products.pdName}}
+          </h4>
+      
+        </div>
+         </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- show appliance products -->
+
+  <!-- show products end -->
 </main>
