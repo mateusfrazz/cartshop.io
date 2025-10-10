@@ -2,22 +2,22 @@
   "banners": [
     {
       "id": 1,
-      "img": "/7dcc28ed89760319.webp"
+      "img": "assets/7dcc28ed89760319.webp"
     },
     {
       "id": 2,
-      "img": "/9021283f0be266c1.webp"
+      "img": "assets/9021283f0be266c1.webp"
     },
     {
       "id": 3,
-      "img": "ef637eb93bf1a887.webp"
+      "img": "assets/ef637eb93bf1a887.webp"
     }
   ],
   "categoriaData":[
     {
     "id": 1,
     "name": "Fashion",
-    "img": "../../assets/images/categoriesimg/fashion.webp",
+    "img": "assets/images/categoriesimg/fashion.webp",
     "code": "fashion"
   },
   {

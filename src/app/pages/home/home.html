@@ -6,10 +6,10 @@
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   
     <div class="carousel-inner">
-     <ng-container *ngFor="let data of bannerImgs; let first = first">
+     <ng-container *ngFor="let banner of bannerImgss; let first = first">
 
     <div class="carousel-item" [class.active]="first">
-      <img [src]="data.img" class="d-block w-100" alt="...">
+      <img [src]="banner.img" class="d-block w-100" alt="...">
     </div>
 
   </ng-container>
