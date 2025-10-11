@@ -28,7 +28,7 @@
   <div class="container mt-5 mb-5">
     <div class="row categorieBox">
       <div class="col lg-3 categorieContent" *ngFor="let categoria of categoriesImgs">
-        <a>
+        <a [routerLink]="['products',categoria.code]">
           <img src="{{ categoria.img }}" />
           <h4>{{ categoria.name }}</h4>
         </a>

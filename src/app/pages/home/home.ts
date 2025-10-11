@@ -1,48 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Navbar } from "../../components/navbar/navbar";
 import { CommonModule } from '@angular/common';
 import { Banner } from '../../interfaces/Banner';
 import { getImages } from '../../service/getImages';
 import { Categories } from '../../interfaces/Categories';
-import { Products } from '../../service/products';
+import { ProductsService } from '../../service/productsService';
 import { Produtos } from '../../interfaces/Produtos';
 import { RouterLink } from '@angular/router';
+
 @Component({
-  selector: 'app-home',
-  imports: [Navbar, CommonModule, RouterLink],
-  templateUrl: './home.html',
-  styleUrl: './home.css'
+  selector: 'app-home',
+  imports: [Navbar, CommonModule, RouterLink],
+  templateUrl: './home.html',
+  styleUrls: ['./home.css']
 })
-export class Home {
-  
-  bannerImgs : Banner[]=[]
-  categoriesImgs : Categories[]=[]
-  productsAll: Produtos[] = []
-  
+export class Home implements OnInit {
+  bannerImgs : Banner[] = [];
+  categoriesImgs : Categories[] = [];
+  productsAll: Produtos[] = [];
+  applianceProducts: Produtos[] = [];
 
+  constructor(
+    private gerImageService: getImages,
+    private productsService: ProductsService,
+    private categoryService: ProductsService
+  ) {}
 
-  constructor(private gerImageService: getImages,
-              private productsService: Products
-  ) {}
-    
-  ngOnInit():void {
-       this.gerImageService.getBanners().subscribe((banners) => {
-           this.bannerImgs = banners;
-       });
+  ngOnInit(): void {
+    this.gerImageService.getBanners().subscribe((banners: Banner[]) => {
+      this.bannerImgs = banners;
+    });
 
-        this.gerImageService.getCategories().subscribe((categories) => {
-            this.categoriesImgs = categories;
-         });
+this.categoryService.getCategories().subscribe((categories: Categories[]) => {
+ this.categoriesImgs = categories;
+    });
 
-        this.productsService.getProducts().subscribe((product)=>{
-            this.productsAll = product;
-        })
-
-        this.productsAll.filter((ele:any) =>{
-          if (ele.pdCategory === 'appliance'){
-            this.productsAll.push(ele);
-        }
-        })
-
-}}
-
+    this.productsService.getProducts().subscribe((products: Produtos[]) => {
+      this.productsAll = products;
+      this.applianceProducts = products.filter(product => product.pdCategory === 'appliance');
+    });
+  }
+}

@@ -10,8 +10,6 @@ import { Categories } from '../interfaces/Categories';
 })
 export class getImages {
     private apiUrl = 'http://localhost:3000/banners'
-    private apiUrlCategories = 'http://localhost:3000/categoriaData'
-
   constructor(
     private http: HttpClient) {}
 
@@ -22,11 +20,6 @@ export class getImages {
       );
   }
 
-    getCategories() {
-    return this.http.get<Categories[]>(this.apiUrlCategories)
-      .pipe(
-        tap(categories => console.log('categorias recebidas da API:', categories))
-      );
-  }
+   
 
 }

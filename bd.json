@@ -13,34 +13,34 @@
       "img": "assets/banner/banner3.webp"
     }
   ],
-  "categoriaData":[
+  "categoriaData": [
     {
-    "id": 1,
-    "name": "Fashion",
-    "img": "assets/categoriesimg/fashion.webp",
-    "code": "fashion"
-  },
-  {
-    "id": 2,
-    "name": "Home & Furniture",
-    "img": "../../assets/categoriesimg/home.webp",
-    "code": "homeandfurniture"
-  },
-  {
-    "id": 3,
-    "name": "Appliance",
-    "img": "../../assets/categoriesimg/appliance.webp",
-    "code": "appliances"
-  },
-  {
-    "id": 4,
-    "name": "Toys",
-    "img": "../../assets/categoriesimg/toys.webp",
-    "code": "toys"
-  }
+      "id": 1,
+      "name": "Fashion",
+      "img": "assets/categoriesimg/fashion.webp",
+      "code": "fashion"
+    },
+    {
+      "id": 2,
+      "name": "Home & Furniture",
+      "img": "../../assets/categoriesimg/home.webp",
+      "code": "homeandfurniture"
+    },
+    {
+      "id": 3,
+      "name": "Appliance",
+      "img": "../../assets/categoriesimg/appliance.webp",
+      "code": "appliances"
+    },
+    {
+      "id": 4,
+      "name": "Toys",
+      "img": "../../assets/categoriesimg/toys.webp",
+      "code": "toys"
+    }
   ],
 
- "products": [
+  "products": [
     {
       "pdId": 8565,
       "pdName": "SAMSUNG Galaxy F04 (Opal Green, 64 GB)",
@@ -226,5 +226,21 @@
       "pdSubCategory": "toys",
       "pdImg": "assets/productimg/toy-4.webp"
     }
+  ],
+  "SubCategories": [
+    [
+      { "id": 1, "categories": "appliances", "subcategories": "mobile" },
+      { "id": 2, "categories": "appliances", "subcategories": "smart tv" },
+      { "id": 3, "categories": "appliances", "subcategories": "air cooler" },
+      { "id": 4, "categories": "appliances", "subcategories": "refrigerator" },
+      { "id": 5, "categories": "fashion", "subcategories": "tshirt" },
+      { "id": 6, "categories": "fashion", "subcategories": "jeans" },
+      { "id": 7, "categories": "homeandfurniture", "subcategories": "sofa" },
+      { "id": 8, "categories": "homeandfurniture", "subcategories": "table" },
+      { "id": 9, "categories": "homeandfurniture", "subcategories": "cover" },
+      { "id": 10, "categories": "toys", "subcategories": "puzzle" },
+      { "id": 11, "categories": "toys", "subcategories": "cars" },
+      { "id": 12, "categories": "toys", "subcategories": "toys" }
+    ]
   ]
 }
