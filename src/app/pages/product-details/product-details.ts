@@ -39,4 +39,8 @@ export class ProductDetails implements OnInit {
         console.log('Produto encontrado:', this.produtoEncontrado);
       });
     }
+
+    addCart(){
+        
+    }
 }
