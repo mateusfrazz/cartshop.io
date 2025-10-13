@@ -228,7 +228,7 @@
     }
   ],
   "SubCategories": [
-    [
+    
       { "id": 1, "categories": "appliances", "subcategories": "mobile" },
       { "id": 2, "categories": "appliances", "subcategories": "smart tv" },
       { "id": 3, "categories": "appliances", "subcategories": "air cooler" },
@@ -242,5 +242,4 @@
       { "id": 11, "categories": "toys", "subcategories": "cars" },
       { "id": 12, "categories": "toys", "subcategories": "toys" }
     ]
-  ]
 }

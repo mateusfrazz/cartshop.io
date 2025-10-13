@@ -5,6 +5,7 @@ import { ProductsService } from '../../service/productsService';
 import { Produtos } from '../../interfaces/Produtos';
 import { CommonModule } from '@angular/common';
 import { SubCategorys } from '../../interfaces/SubCategorys';
+import { SubCategoryService } from '../../service/sub-category-service';
 
 @Component({
   selector: 'app-products',
@@ -16,22 +17,21 @@ export class ProductsComponent implements OnInit {
   getParamValue: string | null = null;
   getProductData: Produtos[] = [];
   filterProductsData: Produtos[] = [];
-  getSubCategoryOtpions: SubCategorys[] = [];
-
+  subCategoryOptions: SubCategorys[] = [];
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private getData: ProductsService,
-    private productsService: ProductsService
+    private subCategoryService: SubCategoryService
   ) {}
 
   ngOnInit(): void {
-    // 1. Pega o parâmetro da rota
+    //Pega o parâmetro da rota
     this.getParamValue = this.route.snapshot.paramMap.get('name');
 
-    // 2. Chama a função e se inscreve
+    //Chama a função e se inscreve
     this.getData.getProducts().subscribe((todosOsProdutos: Produtos[]) => {
-      // 3. Filtra a lista retornando DIRETAMENTE a condição
+      //Filtra a lista retornando DIRETAMENTE a condição
       this.getProductData = todosOsProdutos.filter(
         (produto: Produtos) => produto.pdCategory === this.getParamValue
       );
@@ -40,13 +40,32 @@ export class ProductsComponent implements OnInit {
       );
       console.log(this.getProductData);
     });
+    this.subCategoryService.getSubCategories().subscribe((subCategories: SubCategorys[]) => {
+      this.subCategoryOptions = subCategories.filter(
+        (subCategory: SubCategorys) => subCategory.categories === this.getParamValue
+      );
+    });
+  }
 
-this.productsService.getSubCategories().subscribe((subCategories: SubCategorys[]) => {
-  this.getSubCategoryOtpions = subCategories.filter(
-    (subCategory: SubCategorys) => subCategory.categories === this.getParamValue
-  );
-  console.log('Subcategorias filtradas:', this.getSubCategoryOtpions);
-});
+  //capturando o filtro selecionado
+  filterSelect(data: any) {
+    this.filterProductsData = [];
+    var getFilterValue: any = data.target.value;
+    console.log(getFilterValue);
 
+    if (getFilterValue != 'all') {
+      this.getData.getProducts().subscribe((todosOsProdutos: Produtos[]) => {
+        //Filtra a lista retornando DIRETAMENTE a condição
+        this.filterProductsData = todosOsProdutos.filter(
+          (produto: Produtos) => produto.pdSubCategory === getFilterValue
+        );
+        console.log(this.filterProductsData, 'dentro do if');
+      });
+    }
+    //filtrando todos os produtos
+    else {
+      this.filterProductsData = this.getProductData;
+      console.log(this.filterProductsData, 'dentro do else');
+    }
   }
 }

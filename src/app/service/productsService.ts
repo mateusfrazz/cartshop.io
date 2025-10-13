@@ -10,7 +10,6 @@ import { SubCategorys } from '../interfaces/SubCategorys';
 export class ProductsService {
 private apiUrlProducts = 'http://localhost:3000/products';
 private apiUrlCategories = 'http://localhost:3000/categoriaData'
-private apiUrlSubCategories = 'http://localhost:3000/SubCategories'
   constructor(private http: HttpClient) {}
 
   getProducts() {
@@ -21,12 +20,6 @@ private apiUrlSubCategories = 'http://localhost:3000/SubCategories'
   }
    getCategories() {
     return this.http.get<Categories[]>(this.apiUrlCategories)
-      .pipe(
-        tap(categories => console.log('categorias recebidas da API:', categories))
-      );
-  }
-  getSubCategories() {
-    return this.http.get<SubCategorys[]>(this.apiUrlSubCategories)
       .pipe(
         tap(categories => console.log('categorias recebidas da API:', categories))
       );
