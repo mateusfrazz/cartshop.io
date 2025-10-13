@@ -1,0 +1,13 @@
+.productBox{
+     background-color: hsl(0, 0%, 100%);
+}
+
+.productBox img{
+    width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    .productBox img{
+        width: 100%;
+    }
+}

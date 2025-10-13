@@ -6,10 +6,10 @@ import { Produtos } from '../../interfaces/Produtos';
 import { CommonModule } from '@angular/common';
 import { SubCategorys } from '../../interfaces/SubCategorys';
 import { SubCategoryService } from '../../service/sub-category-service';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-products',
-  imports: [Navbar, CommonModule],
+  imports: [Navbar, CommonModule, RouterLink],
   templateUrl: './products.html',
   styleUrl: './products.css',
 })

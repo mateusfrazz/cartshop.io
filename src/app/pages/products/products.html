@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <main class="container-fluid mt-5 mb-5">
     <div class="row pageBox">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-12">
             <!---Filter-->
             <p>Filter</p>
             <p>Category:{{getParamValue | titlecase}}</p>
@@ -15,18 +15,19 @@
                 </select>
             </div>
         </div>
-        <div class="col-lg-8">
+        <div class="col-lg-8 col-12">
             <!-- product content -->
             <div class="row pageContent mt-5" *ngFor="let product of filterProductsData">
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-12 mt-3 ">
                     <img src="{{product.pdImg}}" alt="">
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-8 col-12 mt-5">
                     <h4>{{product.pdName}}</h4>
                     <p>{{product.pdDesc}}</p>
                     <p><span class="fw-medium"><i class="bi bi-currency-rupee"></i></span>{{product.pdPrice | number}}
                     </p>
-                    <a class="btn btn-sm btn-dark"> view product <i class="bi bi-arrow-right"></i></a>
+                    <a class="btn btn-sm btn-dark" [routerLink]="['/product-details',product.pdCategory, product.pdId]">
+                        view product <i class="bi bi-arrow-right"></i></a>
                 </div>
             </div>
         </div>
