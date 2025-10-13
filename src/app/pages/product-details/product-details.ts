@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router'; // <-- IMPORTE ISSO AQUI
 import { Navbar } from "../../components/navbar/navbar";
 import { Produtos } from '../../interfaces/Produtos';
 import { ProductsService } from '../../service/productsService';
+import { DataStorage } from '../../service/data-storage';
 
 @Component({
   selector: 'app-product-details',
@@ -15,16 +16,21 @@ export class ProductDetails implements OnInit {
     
     // Variável para guardar o produto que a gente achar (pode ser um produto ou nada)
     produtoEncontrado: Produtos | undefined;
+    storeCartData: any=[];
+    inCart: boolean = false;
 
     // Injete o ActivatedRoute junto com o seu serviço
     constructor(
         private productsService: ProductsService,
-        private route: ActivatedRoute 
+        private route: ActivatedRoute,
+        private dataStorage: DataStorage
     ) { }
     
     ngOnInit(): void {
       // 1. Pegar o 'id' que veio na URL (ex: /detalhes/5)
       const idDaUrl = this.route.snapshot.paramMap.get('id');
+
+      this.storeCartData = this.dataStorage.getCartData();
 
       // 2. Chamar o serviço pra pegar TODOS os produtos
       this.productsService.getProducts().subscribe((todosOsProdutos) => {
@@ -38,9 +44,12 @@ export class ProductDetails implements OnInit {
 
         console.log('Produto encontrado:', this.produtoEncontrado);
       });
+
     }
 
-    addCart(){
-        
-    }
+
+    addCart(data:any){
+        this.storeCartData.push(data);
+        this.dataStorage.storeCartData(this.storeCartData);
+    } 
 }

@@ -8,7 +8,7 @@
             <h4>{{produtoEncontrado?.pdName}}</h4>
             <p class="mt-3">{{produtoEncontrado?.pdDesc}}</p>
             <p class="mt-3" ><span class="fw-medium"><i class="bi bi-currency-rupee"></i></span>{{produtoEncontrado?.pdPrice }}</p>
-            <button class="btn btn-md btn-warning" (click)="addCart()">
+            <button class="btn btn-md btn-warning" (click)="addCart(produtoEncontrado)">
                 <i class="bi bi-bag"></i>
                 Adicionar ao carrinho
             </button>
