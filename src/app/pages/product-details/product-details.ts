@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router'; // <-- IMPORTE ISSO AQUI
 import { Navbar } from "../../components/navbar/navbar";
 import { Produtos } from '../../interfaces/Produtos';
@@ -7,49 +8,44 @@ import { DataStorage } from '../../service/data-storage';
 
 @Component({
   selector: 'app-product-details',
-  standalone: true, // Se seu componente for standalone
-  imports: [Navbar],
+  standalone: true,
+  imports: [Navbar, CommonModule],
   templateUrl: './product-details.html',
   styleUrl: './product-details.css'
 })
 export class ProductDetails implements OnInit {
     
-    // Variável para guardar o produto que a gente achar (pode ser um produto ou nada)
     produtoEncontrado: Produtos | undefined;
-    storeCartData: any=[];
     inCart: boolean = false;
 
-    // Injete o ActivatedRoute junto com o seu serviço
     constructor(
         private productsService: ProductsService,
         private route: ActivatedRoute,
-        private dataStorage: DataStorage
+        private dataStorage: DataStorage // O service da inteligência
     ) { }
     
     ngOnInit(): void {
-      // 1. Pegar o 'id' que veio na URL (ex: /detalhes/5)
       const idDaUrl = this.route.snapshot.paramMap.get('id');
 
-      this.storeCartData = this.dataStorage.getCartData();
-
-      // 2. Chamar o serviço pra pegar TODOS os produtos
+      // Pega os produtos pra exibir na tela
       this.productsService.getProducts().subscribe((todosOsProdutos) => {
-        
-        // 3. Usar .find() pra ACHAR o produto certo na lista
-        // O .find() para no primeiro que encontra e retorna só ele. É perfeito pra isso!
         this.produtoEncontrado = todosOsProdutos.find(
-          // O '+' na frente de idDaUrl converte a string da URL pra número
           (produto) => produto.pdId == Number(idDaUrl) 
         );
-
-        console.log('Produto encontrado:', this.produtoEncontrado);
       });
 
+      // Verifica se o item já tá no carrinho pra mostrar o botão certo
+      const carrinhoAtual = this.dataStorage.getCartData();
+      // O método .some() é perfeito pra isso: ele retorna true ou false.
+      this.inCart = carrinhoAtual.some(item => item.pdId == Number(idDaUrl));
     }
-
-
-    addCart(data:any){
-        this.storeCartData.push(data);
-        this.dataStorage.storeCartData(this.storeCartData);
+        
+    // A função agora só tem UMA responsabilidade: mandar o service trabalhar!
+    addCart(produto: Produtos | undefined): void {
+      if (produto) {
+        this.dataStorage.addToCart(produto);
+        // Atualiza o botão pra "Ir para o carrinho" depois de adicionar
+        this.inCart = true;
+      }
     } 
 }

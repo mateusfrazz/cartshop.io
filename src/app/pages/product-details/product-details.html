@@ -2,16 +2,22 @@
 <main class="container mt-5 mb-5">
     <div class="row productBox">
         <div class="col-lg-4 col-12 mt-5">
-   <img src="{{produtoEncontrado?.pdImg}}" >
+            <img src="{{produtoEncontrado?.pdImg}}">
         </div>
         <div class="col-lg-8 col-12 mt-5">
             <h4>{{produtoEncontrado?.pdName}}</h4>
             <p class="mt-3">{{produtoEncontrado?.pdDesc}}</p>
-            <p class="mt-3" ><span class="fw-medium"><i class="bi bi-currency-rupee"></i></span>{{produtoEncontrado?.pdPrice }}</p>
-            <button class="btn btn-md btn-warning" (click)="addCart(produtoEncontrado)">
+            <p class="mt-3"><span class="fw-medium"><i
+                        class="bi bi-currency-rupee"></i></span>{{produtoEncontrado?.pdPrice }}</p>
+            <button *ngIf="!inCart" class="btn btn-md btn-warning" (click)="addCart(produtoEncontrado)">
                 <i class="bi bi-bag"></i>
                 Adicionar ao carrinho
             </button>
+
+            <a *ngIf="inCart" routerLink="/carrinho" class="btn btn-md btn-success">
+                <i class="bi bi-check-lg"></i>
+                Ir para o carrinho
+            </a>
         </div>
     </div>
 </main>
