@@ -32,8 +32,26 @@ export class DataStorage {
   }
 
   // Método privado pra guardar os dados, só o service precisa usar
-  private storeCartData(data: Produtos[]): void {
+  storeCartData(data: Produtos[]): void {
     let cartData = JSON.stringify(data);
     localStorage.setItem('cart-data', cartData);
+  }
+
+  //metodo para remover item do carrinho
+  removeCartItem(produtoParaRemover: Produtos): void {
+    const carrinhoAtual = this.getCartData();
+    const novoCarrinho = carrinhoAtual.filter(item => item.pdId !== produtoParaRemover.pdId);
+    this.storeCartData(novoCarrinho); // storeCartData deve ser o método que salva no localStorage
+}
+
+ totalPrice(): number {
+    const carrinhoAtual = this.getCartData();
+    return carrinhoAtual.reduce((total, produto) => total + produto.pdPrice, 0);
+  }
+
+  //metodo para mostrar a quantidade total do carrinho 
+  countTotalPrice():number{
+      const quantidadeCarrinho = this.getCartData()
+      return quantidadeCarrinho.length;
   }
 }

@@ -1,0 +1,17 @@
+.cartBox{
+    background-color: #fff;
+    padding: 50px 50px;
+}
+
+.cartBox img{
+    width: 100%;
+}
+
+.priceBox{
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px;
+    height: 300px;
+}
+

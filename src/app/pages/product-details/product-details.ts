@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router'; // <-- IMPORTE ISSO AQUI
+import { ActivatedRoute, Router } from '@angular/router'; // <-- IMPORTE ISSO AQUI
 import { Navbar } from "../../components/navbar/navbar";
 import { Produtos } from '../../interfaces/Produtos';
 import { ProductsService } from '../../service/productsService';
@@ -21,7 +21,8 @@ export class ProductDetails implements OnInit {
     constructor(
         private productsService: ProductsService,
         private route: ActivatedRoute,
-        private dataStorage: DataStorage // O service da inteligência
+        private dataStorage: DataStorage, // O service da inteligência
+        private router: Router
     ) { }
     
     ngOnInit(): void {
@@ -46,6 +47,7 @@ export class ProductDetails implements OnInit {
         this.dataStorage.addToCart(produto);
         // Atualiza o botão pra "Ir para o carrinho" depois de adicionar
         this.inCart = true;
+        this.router.navigate(['/cart']); // Navega pro carrinho
       }
     } 
 }

@@ -19,6 +19,14 @@
     color: blue;
 }
 
+.spanbrend{
+   background-color: rgb(89, 227, 245);
+   border: 2px solid white ;
+   color: black;
+   border-radius: 10px;
+   font-size: 14px;
+}
+
 @media screen and (max-width: 600px) {
     .brand {
         font-size: 20px;
