@@ -15,3 +15,8 @@
     height: 300px;
 }
 
+.buttonSection{
+    display: flex;
+    gap: 2px;
+}
+

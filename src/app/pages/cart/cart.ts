@@ -26,11 +26,17 @@ export class Cart {
       
       //contando a quantidade de itens no carrinho
       this.totalItensCart = this.dataStorage.countTotalPrice();
-
-
+      
       
     }
-    
+
+    addQuantidade(){
+
+  }
+  
+   removeQuantidade(){
+
+   }
 
     removeCart(produtoParaRemover: Produtos) {
     // 1. Manda o service fazer o trabalho s
