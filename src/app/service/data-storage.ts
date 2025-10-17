@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Produtos } from '../interfaces/Produtos'; // Importe a interface aqui
 import { BehaviorSubject } from 'rxjs';
+import { CartItem } from '../interfaces/CartItem';
+import { Cart } from '../pages/cart/cart';
 @Injectable({
   providedIn: 'root',
 })
@@ -20,7 +22,7 @@ export class DataStorage {
   }
 
   // get data from local storage
-  getCartData(): Produtos[] {
+  getCartData(): CartItem[] {
     // Use a interface pra ficar mais seguro
     let getData: any = localStorage.getItem('cart-data');
     return getData ? JSON.parse(getData) : []; // Se não achar nada, retorna array vazio
@@ -28,24 +30,51 @@ export class DataStorage {
 
   // O novo método inteligente pra adicionar ao carrinho
   addToCart(produtoNovo: Produtos): void {
-    // 1. Pega o carrinho que já existe
     const carrinhoAtual = this.getCartData();
+    const itemExistente = carrinhoAtual.find(p => p.pdId === produtoNovo.pdId);
 
-    // 2. Verifica se o produto já tá no carrinho
-    const produtoJaExiste = carrinhoAtual.find((p) => p.pdId === produtoNovo.pdId);
-
-    // 3. Se não existir, adiciona o novo produto
-    if (!produtoJaExiste) {
-      carrinhoAtual.push(produtoNovo);
-      this.storeCartData(carrinhoAtual); // Salva a lista atualizada
-      this.atualizarContador(); //avisa que existe mais produtos no carrinho
-      alert('Produto adicionado ao carrinho!'); // Avisa o cabra
+    if (itemExistente) {
+      // Se o item já existe, só aumenta a quantidade
+      this.aumentarQuantidade(itemExistente);
     } else {
-      alert('Esse produto já tá no seu carrinho, consagrado!'); // Avisa que já tem
+      // Se é novo, adiciona com quantidade 1
+      const novoItem: CartItem = { ...produtoNovo, quantity: 1 };
+      carrinhoAtual.push(novoItem);
+      this.storeCartData(carrinhoAtual);
+      this.atualizarContador();
     }
   }
 
-  // Método privado pra guardar os dados, só o service precisa usar
+   
+   //metodo aumentar quantidade 
+   aumentarQuantidade(item:CartItem):void{
+       const carrinho = this.getCartData();
+       const itemParaAumentar = carrinho.find(p => p.pdId === item.pdId);
+       if (itemParaAumentar){
+           itemParaAumentar.quantity++;
+           this.storeCartData(carrinho);
+           this.atualizarContador();
+       }
+   }
+
+
+   //metodo remover quantidade 
+  diminuirQuantidade(item: CartItem): void {
+    const carrinho = this.getCartData();
+    const itemParaDiminuir = carrinho.find(p => p.pdId === item.pdId);
+    if (itemParaDiminuir) {
+      itemParaDiminuir.quantity--;
+      if (itemParaDiminuir.quantity === 0) {
+        // Se a quantidade chegar a zero, remove o item do carrinho
+        this.removeCartItem(itemParaDiminuir);
+      } else {
+        this.storeCartData(carrinho);
+        this.atualizarContador();
+      }
+    }
+  }
+
+  // Método privado pra guardar os dados
   storeCartData(data: Produtos[]): void {
     let cartData = JSON.stringify(data);
     localStorage.setItem('cart-data', cartData);
@@ -60,23 +89,17 @@ export class DataStorage {
   }
 
   totalPrice(): number {
-    const carrinhoAtual = this.getCartData();
-    return carrinhoAtual.reduce((total, produto) => total + produto.pdPrice, 0);
+    const carrinho = this.getCartData();
+    return carrinho.reduce((soma, item) => {
+      // Agora é preço VEZES quantidade
+      return soma + (item.pdPrice * item.quantity);
+    }, 0);
   }
 
   //metodo para mostrar a quantidade total do carrinho
   countTotalPrice(): number {
     const quantidadeCarrinho = this.getCartData();
     return quantidadeCarrinho.length;
-  }
-
-  //adicionar quantidade do produto 
-  addQuantidade(){
-     
-  }
-  
-  removeQuantidade(){
-
   }
 
 }

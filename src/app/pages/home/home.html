@@ -43,13 +43,19 @@
   <!-- show appliance products -->
   <div class="container mt-3 mb-3">
     <div class="row productBox">
-      <p>
+      <div class="eletronicos">
+        <div class="texts-main">
+          
+        </div>
+<p>
         <a class="float-start link-offset-3" [routerLink]="['/products', 'appliances']">Best of Appliance</a>
         <a class="float-end" [routerLink]="['/products', 'appliances']">
           <i class="bi bi-arrow-right-circle"></i>
         </a>
       </p>
-      <div class="col-lg-3 mt-5" *ngFor="let products of productsAll; index as i ">
+      </div>
+      
+      <div class="col-lg-3 mt-5 prducts" *ngFor="let products of productsAll; index as i ">
          <a [routerLink]="['/product-details', products.pdCategory, products.pdId]" class="productLink">
            <div class="productsContent" *ngIf="i<=3">
           <div class="productImg">

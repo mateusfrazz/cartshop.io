@@ -1,54 +1,54 @@
 import { Component, OnInit } from '@angular/core';
-import { Navbar } from "../../components/navbar/navbar";
+import { Navbar } from '../../components/navbar/navbar';
 import { DataStorage } from '../../service/data-storage';
 import { CommonModule } from '@angular/common';
 import { Produtos } from '../../interfaces/Produtos';
+import { CartItem } from '../../interfaces/CartItem';
 
 @Component({
   selector: 'app-cart',
   imports: [Navbar, CommonModule],
   templateUrl: './cart.html',
-  styleUrl: './cart.css'
+  styleUrl: './cart.css',
 })
 export class Cart {
-    constructor(private dataStorage: DataStorage){}
-     
-    getCartData:Produtos []= [];
-    storeCartArray: any = [];
-    totalPrice: number = 0;
-    totalItensCart: number = 0;
+  constructor(private dataStorage: DataStorage) {}
 
-    ngOnInit(){
-      this.getCartData = this.dataStorage.getCartData();
-      // console.log(this.getCartData);
-      this.totalPrice = this.dataStorage.totalPrice();
-      console.log('Preço total do carrinho: ', this.totalPrice);
-      
-      //contando a quantidade de itens no carrinho
-      this.totalItensCart = this.dataStorage.countTotalPrice();
-      
-      
-    }
+  getCartData: CartItem[] = [];
+  storeCartArray: any = [];
+  totalPrice: number = 0;
+  totalItensCart: number = 0;
 
-    addQuantidade(){
-
-  }
-  
-   removeQuantidade(){
-
-   }
-
-    removeCart(produtoParaRemover: Produtos) {
-    // 1. Manda o service fazer o trabalho s
-    this.dataStorage.removeCartItem(produtoParaRemover);
-
-    // 2. Atualiza a tela pegando a lista nova direto da fonte
+  ngOnInit() {
+    this.atualizarDadosDoCarrinho();
     this.getCartData = this.dataStorage.getCartData();
+    // console.log(this.getCartData);
+    this.totalPrice = this.dataStorage.totalPrice();
+    console.log('Preço total do carrinho: ', this.totalPrice);
 
-    //3. atualiza o valor após remover um item
-     this.totalPrice = this.dataStorage.totalPrice();
-    console.log('Item removido com sucesso!');
-}
-
+    //contando a quantidade de itens no carrinho
+    this.totalItensCart = this.dataStorage.countTotalPrice();
   }
 
+  aumentar(item: CartItem) {
+    this.dataStorage.aumentarQuantidade(item);
+    this.atualizarDadosDoCarrinho(); // <-- Sempre atualiza tudo depois de uma ação
+  }
+
+  diminuir(item: CartItem) {
+    this.dataStorage.diminuirQuantidade(item);
+    this.atualizarDadosDoCarrinho();
+  }
+
+  removeCart(item: CartItem) {
+    this.dataStorage.removeCartItem(item);
+    this.atualizarDadosDoCarrinho();
+  }
+
+  quantidadeItem(data: any, type: any) {}
+
+  private atualizarDadosDoCarrinho() {
+    this.getCartData = this.dataStorage.getCartData();
+    this.totalPrice = this.dataStorage.totalPrice();
+  }
+}

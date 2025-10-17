@@ -18,9 +18,9 @@
                             Remover
                         </button>
                         <div class="mt-2 mb-2 buttonSection">
-                            <button class="btn btn-sm btn-dark" (click)="removeQuantidade()">-</button> 
-                            <input type="number" class="col-lg-1 ">
-                            <button class="btn btn-sm btn-dark" (click)="addQuantidade()">+</button>
+                            <button class="btn btn-sm btn-dark" (click)="diminuir(data)">-</button> 
+                            <input [value]="data.quantity" class="col-lg-1">
+                            <button class="btn btn-sm btn-dark" (click)="aumentar(data)">+</button>
                         </div>
 
                     </div>

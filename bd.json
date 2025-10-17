@@ -2,15 +2,15 @@
   "banners": [
     {
       "id": 1,
-      "img": "assets/banner/banner1.webp"
+      "img": "assets/banner/banner1.png"
     },
     {
       "id": 2,
-      "img": "assets/banner/banner2.webp"
+      "img": "assets/banner/banner2.png"
     },
     {
       "id": 3,
-      "img": "assets/banner/banner3.webp"
+      "img": "assets/banner/banner3.png"
     }
   ],
   "categoriaData": [
