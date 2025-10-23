@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { SubCategorys } from '../../interfaces/SubCategorys';
 import { SubCategoryService } from '../../service/sub-category-service';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-products',
   imports: [Navbar, CommonModule, RouterLink],
@@ -18,6 +19,7 @@ export class ProductsComponent implements OnInit {
   getProductData: Produtos[] = [];
   filterProductsData: Produtos[] = [];
   subCategoryOptions: SubCategorys[] = [];
+  apiUrl = environment.apiUrl;
 
   constructor(
     private route: ActivatedRoute,

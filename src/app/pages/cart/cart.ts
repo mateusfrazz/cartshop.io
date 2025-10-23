@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar';
 import { DataStorage } from '../../service/data-storage';
 import { CommonModule } from '@angular/common';
-import { Produtos } from '../../interfaces/Produtos';
 import { CartItem } from '../../interfaces/CartItem';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -18,6 +18,7 @@ export class Cart {
   storeCartArray: any = [];
   totalPrice: number = 0;
   totalItensCart: number = 0;
+  apiUrl = environment.apiUrl;
 
   ngOnInit() {
     this.atualizarDadosDoCarrinho();

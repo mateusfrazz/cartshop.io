@@ -5,6 +5,7 @@ import { Navbar } from "../../components/navbar/navbar";
 import { Produtos } from '../../interfaces/Produtos';
 import { ProductsService } from '../../service/productsService';
 import { DataStorage } from '../../service/data-storage';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-product-details',
@@ -17,6 +18,7 @@ export class ProductDetails implements OnInit {
     
     produtoEncontrado: Produtos | undefined;
     inCart: boolean = false;
+    apiUrl = environment.apiUrl;
 
     constructor(
         private productsService: ProductsService,

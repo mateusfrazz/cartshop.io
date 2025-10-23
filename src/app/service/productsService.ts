@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { Produtos } from '../interfaces/Produtos';
 import { Categories } from '../interfaces/Categories';
-import { SubCategorys } from '../interfaces/SubCategorys';
+import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-private apiUrlProducts = 'http://localhost:3000/products';
-private apiUrlCategories = 'http://localhost:3000/categoriaData'
+private apiUrlProducts = environment.apiUrl + 'products';
+private apiUrlCategories = environment.apiUrl + 'categoriaData';
+
   constructor(private http: HttpClient) {}
 
   getProducts() {

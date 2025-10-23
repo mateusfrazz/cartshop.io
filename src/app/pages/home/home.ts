@@ -7,6 +7,7 @@ import { Categories } from '../../interfaces/Categories';
 import { ProductsService } from '../../service/productsService';
 import { Produtos } from '../../interfaces/Produtos';
 import { RouterLink } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,7 @@ export class Home implements OnInit {
   categoriesImgs : Categories[] = [];
   productsAll: Produtos[] = [];
   applianceProducts: Produtos[] = [];
+ apiUrl = environment.apiUrl;
 
   constructor(
     private gerImageService: getImages,

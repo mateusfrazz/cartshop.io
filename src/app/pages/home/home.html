@@ -6,7 +6,7 @@
     <div class="carousel-inner">
       <ng-container *ngFor="let banner of bannerImgs; let first = first">
         <div class="carousel-item" [class.active]="first">
-          <img [src]="banner.img" class="d-block w-100" alt="..." />
+          <img [src]="apiUrl  + banner.img" class="d-block w-100" alt="..." />
         </div>
       </ng-container>
     </div>
@@ -29,7 +29,7 @@
     <div class="row categorieBox">
       <div class="col lg-3 categorieContent" *ngFor="let categoria of categoriesImgs">
         <a [routerLink]="['products',categoria.code]">
-          <img src="{{ categoria.img }}" />
+          <img src="{{ apiUrl +  categoria.img }}" />
           <h4>{{ categoria.name }}</h4>
         </a>
       </div>
@@ -59,7 +59,7 @@
          <a [routerLink]="['/product-details', products.pdCategory, products.pdId]" class="productLink">
            <div class="productsContent" *ngIf="i<=3">
           <div class="productImg">
-                <img src="{{products.pdImg}}" alt="">
+                <img src="{{apiUrl + products.pdImg}}" alt="">
           </div>
           <h4>
             {{products.pdName}}
