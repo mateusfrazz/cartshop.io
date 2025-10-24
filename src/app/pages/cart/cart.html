@@ -11,7 +11,7 @@
                         <img src="{{apiUrl+ data.pdImg}}" alt="cart image">
                     </div>
                     <div class="col-lg-10">
-                        <h5>{{apiUrl + data.pdName}}</h5>
+                        <h5>{{ data.pdName}}</h5>
                         <p class="mt-2 mb-3"><span><i class="bi bi-currency-dollar"></i></span>{{data.pdPrice| number}}
                         </p>
                         <button class="btn btn-sm btn-danger" (click)="removeCart(data)"><i class="bi bi-trash"></i>
