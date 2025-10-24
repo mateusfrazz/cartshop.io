@@ -59,7 +59,7 @@
       </div>
       
 
-      <div class="col-lg-3 mt-5 prducts" *ngFor="let products of productsAll; index as i ">
+      <div class="col-lg-3 mt-5 prducts" *ngFor="let products of productsApplend; index as i ">
         <a [routerLink]="['/product-details', products.pdCategory, products.pdId]" class="productLink">
           <div class="productsContent" *ngIf="i<=3">
             <div class="productImg">

@@ -18,9 +18,10 @@ import { environment } from '../../../environments/environment';
 export class Home implements OnInit {
   bannerImgs : Banner[] = [];
   categoriesImgs : Categories[] = [];
-  productsAll: Produtos[] = [];
+  productsApplend: Produtos[] = [];
   applianceProducts: Produtos[] = [];
- apiUrl = environment.apiUrl;
+fashionProducts : Produtos [] = [];
+  apiUrl = environment.apiUrl;
 
   constructor(
     private gerImageService: getImages,
@@ -38,8 +39,9 @@ this.categoryService.getCategories().subscribe((categories: Categories[]) => {
     });
 
     this.productsService.getProducts().subscribe((products: Produtos[]) => {
-      this.productsAll = products;
+      this.productsApplend = products;
       this.applianceProducts = products.filter(product => product.pdCategory === 'appliance');
     });
+
   }
 }

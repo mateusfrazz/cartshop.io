@@ -78,9 +78,22 @@
 
 .carousel-item img {
   
-  height: 380px;
+  height: 31.25rem;
   width: 100%; /* Faz a imagem ocupar toda a largura do carrossel */
-
-
   object-position: center; 
+  background-size: cover;
 }
+
+
+ @media screen and (max-width: 600px) {
+   
+.carousel-item img {
+  
+  height: 200px;
+  width: 100%; /* Faz a imagem ocupar toda a largura do carrossel */
+  object-position: center; 
+  background-size: cover;
+}
+   
+
+ }
