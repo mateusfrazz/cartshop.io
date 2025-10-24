@@ -1,59 +1,62 @@
-# CartshopIo
+<img width="1900" height="920" alt="image" src="https://github.com/user-attachments/assets/a26575b3-202c-4b98-b699-703e77080adb" />
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
 
-## Development server
+# CartShop.io 🛒
 
-To start a local development server, run:
+Front-end do projeto CartShop.io, desenvolvido em Angular. Sistema completo para e-commerce, com integração ao back-end próprio via API e funcionalidades essenciais de uma loja virtual.
 
-```bash
-ng serve
-```
+---
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 📚 Descrição
 
-## Code scaffolding
+CartShop.io é uma aplicação web que oferece uma experiência intuitiva de um sistema de  loja virtual. A interface é responsiva, focada em praticidade e velocidade, com recursos modernos de filtragem, busca e manipulação de carrinho. O front-end é feito em Angular, consumindo uma API própria hospedada em Render.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Back-end - Hospedagem :** [cartshop-io-back-end](https://cartshop-io-back-end.onrender.com)  
+-  **Back-end -  Repositorio** [cartshop-repositorio-back-end](https://github.com/mateusfrazz/CartShop.io-Back-End).
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## ⚙️ Funcionalidades principais
 
-```bash
-ng generate --help
-```
+- Listagem de produtos e banners dinâmicos
+- Busca por nome e filtro por categoria
+- Carrinho de compras: adicionar, remover e atualizar itens
+- Checkout e página de confirmação de compra
+- Design responsivo com Angular Material
+- Consumo de API Node.js e hospedada em Render.
 
-## Building
+## 🛠️ Tecnologias Utilizadas
+- Angular
+- Angular Material
+- TypeScript
+- HTML5 & SCSS
+- Node.js / JSON-Server (back-end)
+- Render (back-end hosting)
+- Netlify
+- Bootstrap 
 
-To build the project run:
+---
+## 🚀 Como executar
 
-```bash
-ng build
-```
+### Pré-requisitos
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Node.js (versão 16+)
+- Angular CLI
 
-## Running unit tests
+### Instalação
+- git clone
+- https://github.com/mateusfrazz/cartshop.io.git
+- cd cartshop.io
+- npm install
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Inicialização
+- ng serve
+- Acesse em [http://localhost:4200]
 
-```bash
-ng test
-```
+## 🔗 Back-end
+- [API Render Online](https://cartshop-io-back-end.onrender.com)
+- *(Repositório no GitHub : https://github.com/mateusfrazz/CartShop.io-Back-End)*
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
