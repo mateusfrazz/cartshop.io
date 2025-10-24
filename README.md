@@ -3,7 +3,9 @@
 
 # CartShop.io 🛒
 
-Front-end do projeto CartShop.io, desenvolvido em Angular. Sistema completo para e-commerce, com integração ao back-end próprio via API e funcionalidades essenciais de uma loja virtual.
+Front-end do projeto CartShop.io, desenvolvido em Angular. Sistema completo para e-commerce, com integração ao back-end próprio via API e funcionalidades essenciais de uma loja virtual.<br>
+<br>
+[Clique para acessar o projeto](https://cartshopio.netlify.app/)
 
 ---
 
