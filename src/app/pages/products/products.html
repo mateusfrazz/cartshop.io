@@ -9,8 +9,8 @@
             <div class="col-lg-4">
                 <select class="form-select form-select-sm" (change)="filterSelect($event)">
                     <option value="all">All</option>
-                    <option *ngFor="let Subcategory of subCategoryOptions" value="{{Subcategory.subcategories}}">
-                        {{Subcategory.subcategories | titlecase}}
+                    <option *ngFor="let Subcategory of subCategoryOptions" value="{{ apiUrl + Subcategory.subcategories}}">
+                        {{apiUrl + Subcategory.subcategories | titlecase}}
                     </option>
                 </select>
             </div>
